@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FlippyMind</string>
+
+    <string name="decks">Колоды</string>
+    <string name="cards">Карты</string>
+
 </resources>
