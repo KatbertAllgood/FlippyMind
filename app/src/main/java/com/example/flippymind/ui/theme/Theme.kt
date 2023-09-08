@@ -1,25 +1,29 @@
 package com.example.flippymind.ui.theme
 
-import android.app.Activity
-import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
+add//import android.app.Activity
+//import android.os.Build
+//import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
+//import androidx.compose.material3.MaterialTheme
+//import androidx.compose.material3.darkColorScheme
+//import androidx.compose.material3.dynamicDarkColorScheme
+//import androidx.compose.material3.dynamicLightColorScheme
+//import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalView
+//import androidx.compose.runtime.SideEffect
+//import androidx.compose.ui.graphics.toArgb
+//import androidx.compose.ui.platform.LocalContext
+//import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.view.WindowCompat
+import com.example.flippymind.R
+
+//import androidx.core.view.WindowCompat
 
 @Composable
 internal fun FlippyMindTheme(
@@ -38,7 +42,8 @@ internal fun FlippyMindTheme(
                 FlippyMindSize.Medium -> 20.sp
                 FlippyMindSize.Big -> 24.sp
             },
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            fontFamily = FontFamily(Font(R.font.rubik_mono_one_regular))
         ),
         default = TextStyle(
             fontSize = when (textSize) {
