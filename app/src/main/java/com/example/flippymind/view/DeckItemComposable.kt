@@ -61,7 +61,7 @@ fun DeckItemComposable(
 
     FlippyMindTheme(
         corners = FlippyMindCorners.Rounded,
-        textSize = FlippyMindSize.Medium
+        textSize = FlippyMindSize.Small
     ) {
 
         Card(
@@ -106,17 +106,18 @@ fun DeckItemComposable(
                     }
 
                     Text(
-                        text = when(deckItem.cardsCount % 10) {
-                            0 -> stringResource(
-                                 id = R.string.card_v3, deckItem.cardsCount)
-                            1 -> stringResource(
-                                id = R.string.card_v1, deckItem.cardsCount)
-                            in 2..4 -> stringResource(
-                                id = R.string.card_v2, deckItem.cardsCount)
-                            in 5..9 -> stringResource(
-                                id = R.string.card_v3, deckItem.cardsCount)
-                            else -> "error"
-                        },
+//                        text = when(deckItem.cardsCount % 100) {
+//                            0 -> stringResource(
+//                                 id = R.string.card_v3, deckItem.cardsCount)
+//                            1 -> stringResource(
+//                                id = R.string.card_v1, deckItem.cardsCount)
+//                            in 2..4 -> stringResource(
+//                                id = R.string.card_v2, deckItem.cardsCount)
+//                            in 5..9 -> stringResource(
+//                                id = R.string.card_v3, deckItem.cardsCount)
+//                            else -> "error"
+//                        },
+                        text = stringResource(R.string.cards_in_deck, deckItem.cardsCount),
                         color = FlippyMindTheme.colors.primaryText,
                         fontFamily = FlippyMindTheme.typography.default.fontFamily,
                         fontSize = FlippyMindTheme.typography.default.fontSize
