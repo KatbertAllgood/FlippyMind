@@ -2,6 +2,7 @@ package com.example.flippymind.view
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -69,17 +70,23 @@ fun DeckItemComposable(
             elevation = CardDefaults
                 .cardElevation(defaultElevation = 5.dp),
             shape = FlippyMindTheme.shape.cornersStyle,
+            colors = CardDefaults.cardColors(
+                containerColor = FlippyMindTheme.colors.secondaryBackground
+            ),
             modifier = Modifier
 //                .fillMaxWidth()
                 .height(120.dp)
                 .padding(10.dp)
                 .aspectRatio(2f)
+                .clickable {
+
+                }
         ) {
             Column(
 //                verticalArrangement = Arrangement.,
                 horizontalAlignment = Alignment.Start,
                 modifier = Modifier
-                    .background(FlippyMindTheme.colors.secondaryBackground)
+//                    .background(FlippyMindTheme.colors.secondaryBackground)
                     .fillMaxSize()
             ) {
 
