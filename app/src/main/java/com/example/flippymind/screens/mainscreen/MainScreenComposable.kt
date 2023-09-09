@@ -131,8 +131,8 @@ private fun DecksHeader(
                     ),
                     modifier = Modifier
                         .height(40.dp)
-//                        .width(40.dp),
-//                    contentPadding = PaddingValues(20.dp)
+                        .width(60.dp),
+                    contentPadding = PaddingValues(0.dp)
                 ){
                     Image(
                         painter = painterResource(id = R.drawable.ic_plus),
