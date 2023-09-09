@@ -1,6 +1,6 @@
 package com.example.flippymind.ui.theme
 
-add//import android.app.Activity
+//import android.app.Activity
 //import android.os.Build
 //import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,7 +22,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.flippymind.R
-
 //import androidx.core.view.WindowCompat
 
 @Composable
@@ -51,7 +50,17 @@ internal fun FlippyMindTheme(
                 FlippyMindSize.Medium -> 14.sp
                 FlippyMindSize.Big -> 16.sp
             },
-            fontWeight = FontWeight.Normal
+            fontWeight = FontWeight.Normal,
+            fontFamily = FontFamily(Font(R.font.roboto_regular))
+        ),
+        defaultBold = TextStyle(
+            fontSize = when (textSize) {
+                FlippyMindSize.Small -> 12.sp
+                FlippyMindSize.Medium -> 14.sp
+                FlippyMindSize.Big -> 16.sp
+            },
+            fontWeight = FontWeight.Normal,
+            fontFamily = FontFamily(Font(R.font.roboto_bold))
         )
     )
 
