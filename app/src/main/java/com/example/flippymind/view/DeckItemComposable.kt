@@ -5,8 +5,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -24,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.example.domain.models.DeckModelDomain
 import com.example.flippymind.R
 import com.example.flippymind.ui.theme.FlippyMindCorners
+import com.example.flippymind.ui.theme.FlippyMindSize
 import com.example.flippymind.ui.theme.FlippyMindTheme
 
 @Preview(showBackground = true)
@@ -57,15 +60,19 @@ fun DeckItemComposable(
     )
 
     FlippyMindTheme(
-        corners = FlippyMindCorners.Rounded
+        corners = FlippyMindCorners.Rounded,
+        textSize = FlippyMindSize.Medium
     ) {
 
         Card(
             elevation = CardDefaults
-                .cardElevation(defaultElevation = 10.dp),
+                .cardElevation(defaultElevation = 3.dp),
             shape = FlippyMindTheme.shape.cornersStyle,
             modifier = Modifier
-                .fillMaxSize()
+//                .fillMaxWidth()
+                .height(120.dp)
+                .padding(10.dp)
+                .aspectRatio(2f)
         ) {
             Column(
 //                verticalArrangement = Arrangement.,
@@ -84,6 +91,7 @@ fun DeckItemComposable(
                             horizontal = 10.dp,
                             vertical = 10.dp
                         )
+//                        .background(Color.Red)
                 ) {
 
                     Canvas(
@@ -104,7 +112,7 @@ fun DeckItemComposable(
                             1 -> stringResource(
                                 id = R.string.card_v1, deckItem.cardsCount)
                             in 2..4 -> stringResource(
-                                id = R.string.card_v2)
+                                id = R.string.card_v2, deckItem.cardsCount)
                             in 5..9 -> stringResource(
                                 id = R.string.card_v3, deckItem.cardsCount)
                             else -> "error"
@@ -121,9 +129,12 @@ fun DeckItemComposable(
                     fontFamily = FlippyMindTheme.typography.defaultBold.fontFamily,
                     fontSize = FlippyMindTheme.typography.defaultBold.fontSize,
                     modifier = Modifier
+                        .fillMaxWidth()
                         .padding(
-                            vertical = 10.dp,
-                            horizontal = 10.dp
+                            start = 10.dp,
+                            end = 10.dp,
+                            top = 8.dp,
+                            bottom = 20.dp
                         )
                 )
             }
