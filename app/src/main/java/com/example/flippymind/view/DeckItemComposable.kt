@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.domain.models.DeckModelDomain
 import com.example.flippymind.R
 import com.example.flippymind.ui.theme.FlippyMindCorners
@@ -128,7 +129,8 @@ fun DeckItemComposable(
                     text = deckItem.name,
                     color = FlippyMindTheme.colors.primaryText,
                     fontFamily = FlippyMindTheme.typography.defaultBold.fontFamily,
-                    fontSize = FlippyMindTheme.typography.defaultBold.fontSize,
+//                    fontSize = FlippyMindTheme.typography.defaultBold.fontSize,
+                    fontSize = 14.sp,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
