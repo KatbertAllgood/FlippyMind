@@ -4,4 +4,7 @@
     <string name="decks">Колоды</string>
     <string name="cards">Карты</string>
 
+    <string name="card_v1">%s карта</string>
+    <string name="card_v2">%s карты</string>
+    <string name="card_v3">%s карт</string>
 </resources>
