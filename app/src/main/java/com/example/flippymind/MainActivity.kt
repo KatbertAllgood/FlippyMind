@@ -27,7 +27,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.domain.models.DeckModelDomain
+import com.example.flippymind.screens.createnewdeck.CreateNewDeckComposable
+import com.example.flippymind.screens.mainscreen.MainScreenComposable
 import com.example.flippymind.ui.theme.FlippyMindSize
 import com.example.flippymind.ui.theme.FlippyMindTheme
 import com.example.flippymind.view.DeckItemComposable
@@ -39,136 +44,41 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TestPreview()
-        }
-    }
-}
 
-@Preview(showBackground = true)
-@Composable
-private fun TestPreview(){
-    FlippyMindTheme(
-        textSize = FlippyMindSize.Medium
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(FlippyMindTheme.colors.primaryBackground)
-        ) {
-            DecksHeader()
-            DecksList()
-        }
-    }
-}
+            val navController = rememberNavController()
 
-@Composable
-private fun DecksHeader() {
-    FlippyMindTheme() {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    top = 20.dp,
-                    start = 20.dp,
-                    end = 20.dp
-                )
-        ) {
+            FlippyMindTheme {
 
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
+                NavHost(
+                    navController = navController,
+                    startDestination = MAIN_SCREEN
+                ) {
 
-                Image(
-                    painter = painterResource(id = R.drawable.ic_decks),
-                    contentDescription = "decks icon"
-                )
+                    composable(MAIN_SCREEN) {
+                        MainScreenComposable {
+                            navController.navigate(CREATE_NEW_DECK_SCREEN)
+                        }
+                    }
 
-                Text(
-                    text = stringResource(id = R.string.decks),
-                    color = FlippyMindTheme.colors.primaryText,
-                    fontFamily = FlippyMindTheme.typography.heading.fontFamily,
-                    fontSize = FlippyMindTheme.typography.heading.fontSize,
-                    modifier = Modifier
-                        .padding(
-                            start = 10.dp
-                        )
-                )
-
+                    composable(CREATE_NEW_DECK_SCREEN) {
+                        CreateNewDeckComposable {
+                            navController.navigate(MAIN_SCREEN) {
+                                popUpTo(MAIN_SCREEN) {
+                                    inclusive = true
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-
-                Image(
-                    painter = painterResource(id = R.drawable.ic_four_dots_more),
-                    contentDescription = "grid view of decks",
-                    modifier = Modifier
-                        .padding(
-                            end = 20.dp
-                        )
-                        .size(20.dp)
-                )
-
-                Image(
-                    painter = painterResource(id = R.drawable.ic_plus),
-                    contentDescription = "add new deck",
-                    modifier = Modifier
-                        .size(20.dp)
-                )
-
-            }
         }
+    }
+
+    companion object {
+        const val MAIN_SCREEN = "main_screen"
+        const val CREATE_NEW_DECK_SCREEN = "create_new_deck_screen"
     }
 }
 
-@Composable
-private fun DecksList(){
 
-    val list : List<DeckModelDomain> = listOf(
-        DeckModelDomain(
-            "новая папка",
-            12,
-            0xFF04963E
-        ),
-        DeckModelDomain(
-            "Игарёха",
-            227,
-            0xFFEEAA00
-        ),
-        DeckModelDomain(
-            "бебрская словарка",
-            116,
-            0xFF7289DA
-        ),
-        DeckModelDomain(
-            "бебрская словарка",
-            116,
-            0xFF7289DA
-        ),
-        DeckModelDomain(
-            "бебрская словаркаadskgjasdklgjasdkgjaskdjgadsl;jg;lkasdgj",
-            116,
-            0xFF7289DA
-        ),
-    )
-    FlippyMindTheme(){
-
-
-        LazyRow(
-            contentPadding = PaddingValues(
-                horizontal = 10.dp,
-                vertical = 5.dp
-            ),
-//            modifier = Modifier
-//                .height(intrinsicSize = IntrinsicSize.Max)
-        ) {
-
-            items(list) {
-                DeckItemComposable(deckItem = it)
-            }
-        }
-    }
-}
