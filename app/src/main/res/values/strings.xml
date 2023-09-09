@@ -7,4 +7,5 @@
     <string name="card_v1">%s карта</string>
     <string name="card_v2">%s карты</string>
     <string name="card_v3">%s карт</string>
+    <string name="cards_in_deck">Карт в колоде: %s</string>
 </resources>
