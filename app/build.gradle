@@ -59,6 +59,9 @@ dependencies {
     implementation project(':data')
     implementation project(':domain')
 
+    // Compose Navigation
+    def nav_version = "2.7.2"
+    implementation "androidx.navigation:navigation-compose:$nav_version"
 
     // Hilt
     implementation 'com.google.dagger:hilt-android:2.48'
