@@ -66,7 +66,7 @@ fun DeckItemComposable(
 
         Card(
             elevation = CardDefaults
-                .cardElevation(defaultElevation = 3.dp),
+                .cardElevation(defaultElevation = 5.dp),
             shape = FlippyMindTheme.shape.cornersStyle,
             modifier = Modifier
 //                .fillMaxWidth()
