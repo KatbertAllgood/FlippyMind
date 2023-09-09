@@ -17,7 +17,8 @@ data class FlippyMindColors(
 
 data class FlippyMindTypography(
     val heading: TextStyle,
-    val default: TextStyle
+    val default: TextStyle,
+    val defaultBold: TextStyle
 )
 
 data class FlippyMindShape(
