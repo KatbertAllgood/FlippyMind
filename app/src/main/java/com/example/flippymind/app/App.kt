@@ -7,7 +7,7 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class App : Application() {
 
-    val database by lazy {
+    val database by lazy { //TODO() should migrate to dagger hilt
          MainDatabase.createDatabase(this)
     }
 }
