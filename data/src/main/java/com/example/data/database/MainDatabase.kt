@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.data.models.DeckModelData
 
 @Database(
-    entities = [ // here is points @Entity (tables), wich should be in database
+    entities = [ // here is points @Entity (tables), which should be in database
         DeckModelData::class
     ],
     version = 1
