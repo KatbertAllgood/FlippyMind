@@ -14,6 +14,8 @@ import com.example.data.models.DeckModelData
 )
 abstract class MainDatabase : RoomDatabase() {
 
+    abstract val dao: Dao
+
     companion object {
         fun createDatabase(
             context: Context
