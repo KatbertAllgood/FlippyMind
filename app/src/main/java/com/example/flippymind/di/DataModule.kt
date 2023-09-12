@@ -16,7 +16,7 @@ class DataModule {
     // all repos point there
 
     @Provides
-    @Singleton // creates one time
+    @Singleton // singleton - creates one time
     fun provideMainDatabaseRepository(
         @ApplicationContext context : Context
     ) : MainDatabaseRepository = MainDatabaseRepositoryImpl(context)
