@@ -1,14 +1,12 @@
 package com.example.data.database
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.data.models.DeckModelData
+import com.example.data.models.DeckData
 
 @Database(
     entities = [ // here is points @Entity (tables), which should be in database
-        DeckModelData::class
+        DeckData::class
     ],
     version = 1
 )
