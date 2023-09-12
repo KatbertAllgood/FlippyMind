@@ -30,11 +30,16 @@ import com.example.flippymind.model.DeckPresentation
 import com.example.flippymind.ui.theme.FlippyMindSize
 import com.example.flippymind.ui.theme.FlippyMindTheme
 import com.example.flippymind.view.DeckItemComposable
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun MainScreenComposable(
-    onClickNewDeck: () -> Unit
+//    onClickNewDeck: () -> Unit,
+    viewModel: MainScreenVM = viewModel()
 ){
+
+    viewModel.getAddDecks()
+
     FlippyMindTheme(
         textSize = FlippyMindSize.Medium
     ) {
@@ -43,7 +48,9 @@ fun MainScreenComposable(
                 .fillMaxSize()
                 .background(FlippyMindTheme.colors.primaryBackground)
         ) {
-            DecksHeader(onClickNewDeck)
+            DecksHeader(
+//                onClickNewDeck
+            )
             DecksList()
 
         }
@@ -54,13 +61,13 @@ fun MainScreenComposable(
 @Composable
 private fun MainScreenPreview() {
     MainScreenComposable(
-        onClickNewDeck = { }
+//        onClickNewDeck = { }
     )
 }
 
 @Composable
 private fun DecksHeader(
-    onClickNewDeck: () -> Unit
+//    onClickNewDeck: () -> Unit
 ) {
     FlippyMindTheme() {
         Row(
@@ -113,7 +120,7 @@ private fun DecksHeader(
 
                 Button(
                     onClick = {
-                        onClickNewDeck()
+//                        onClickNewDeck()
                     },
                     shape = RoundedCornerShape(50),
                     colors = ButtonDefaults.buttonColors(
@@ -145,27 +152,7 @@ private fun DecksList(){
             name = "новая папка",
             cardsCount = 12,
             color = 0xFF04963E
-        ),
-//        DeckModelPresentation(
-//            "Игарёха",
-//            227,
-//            0xFFEEAA00
-//        ),
-//        DeckModelPresentation(
-//            "бебрская словарка",
-//            116,
-//            0xFF7289DA
-//        ),
-//        DeckModelPresentation(
-//            "бебрская словарка",
-//            116,
-//            0xFF7289DA
-//        ),
-//        DeckModelPresentation(
-//            "бебрская словаркаadskgjasdklgjasdkgjaskdjgadsl;jg;lkasdgj",
-//            116,
-//            0xFF7289DA
-//        ),
+        )
     )
     FlippyMindTheme(){
 
