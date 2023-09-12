@@ -25,7 +25,7 @@ class MainScreenVM @Inject constructor(
 
     private val TAG = MainScreenVM::class.simpleName
 
-    fun getAddDecks() {
+    fun getAllDecks() {
 
         viewModelScope.launch {
 
