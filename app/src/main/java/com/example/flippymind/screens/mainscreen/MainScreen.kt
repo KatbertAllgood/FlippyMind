@@ -1,11 +1,8 @@
 package com.example.flippymind.screens.mainscreen
 
-import android.widget.ImageButton
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -17,26 +14,19 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.domain.models.DeckModelDomain
 import com.example.flippymind.R
+import com.example.flippymind.model.DeckPresentation
 import com.example.flippymind.ui.theme.FlippyMindSize
 import com.example.flippymind.ui.theme.FlippyMindTheme
 import com.example.flippymind.view.DeckItemComposable
@@ -150,32 +140,32 @@ private fun DecksHeader(
 @Composable
 private fun DecksList(){
 
-    val list : List<DeckModelDomain> = listOf(
-        DeckModelDomain(
-            "новая папка",
-            12,
-            0xFF04963E
+    val list : List<DeckPresentation> = listOf(
+        DeckPresentation(
+            name = "новая папка",
+            cardsCount = 12,
+            color = 0xFF04963E
         ),
-        DeckModelDomain(
-            "Игарёха",
-            227,
-            0xFFEEAA00
-        ),
-        DeckModelDomain(
-            "бебрская словарка",
-            116,
-            0xFF7289DA
-        ),
-        DeckModelDomain(
-            "бебрская словарка",
-            116,
-            0xFF7289DA
-        ),
-        DeckModelDomain(
-            "бебрская словаркаadskgjasdklgjasdkgjaskdjgadsl;jg;lkasdgj",
-            116,
-            0xFF7289DA
-        ),
+//        DeckModelPresentation(
+//            "Игарёха",
+//            227,
+//            0xFFEEAA00
+//        ),
+//        DeckModelPresentation(
+//            "бебрская словарка",
+//            116,
+//            0xFF7289DA
+//        ),
+//        DeckModelPresentation(
+//            "бебрская словарка",
+//            116,
+//            0xFF7289DA
+//        ),
+//        DeckModelPresentation(
+//            "бебрская словаркаadskgjasdklgjasdkgjaskdjgadsl;jg;lkasdgj",
+//            116,
+//            0xFF7289DA
+//        ),
     )
     FlippyMindTheme(){
 

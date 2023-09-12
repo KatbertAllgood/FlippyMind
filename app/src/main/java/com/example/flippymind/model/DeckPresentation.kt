@@ -1,10 +1,10 @@
 package com.example.flippymind.model
 
-import com.example.domain.models.DeckModelDomain
+import com.example.domain.models.DeckDomain
 
-data class DeckModelPresentation(
+data class DeckPresentation(
     override val id: Int? = null,
     override val name: String,
     override val cardsCount: Int,
     override val color: Long
-) : DeckModelDomain
+) : DeckDomain

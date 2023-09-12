@@ -1,6 +1,6 @@
 package com.example.domain.models
 
-interface DeckModelDomain {
+interface DeckDomain {
 
     val id: Int?
     val name: String
