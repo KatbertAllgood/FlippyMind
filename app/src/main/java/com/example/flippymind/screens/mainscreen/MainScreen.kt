@@ -58,9 +58,21 @@ fun MainScreenComposable(
 @Preview(showBackground = true)
 @Composable
 private fun MainScreenPreview() {
-    MainScreenComposable(
-//        onClickNewDeck = { }
-    )
+    FlippyMindTheme(
+        textSize = FlippyMindSize.Medium
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(FlippyMindTheme.colors.primaryBackground)
+        ) {
+            DecksHeader(
+//                onClickNewDeck
+            )
+            DecksList()
+
+        }
+    }
 }
 
 @Composable
