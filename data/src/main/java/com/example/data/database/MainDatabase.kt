@@ -14,17 +14,6 @@ import com.example.data.models.DeckModelData
 )
 abstract class MainDatabase : RoomDatabase() {
 
-    abstract val dao: Dao
-
-    companion object {
-        fun createDatabase(
-            context: Context
-        ) : MainDatabase {
-            return Room.databaseBuilder(
-                context,
-                MainDatabase::class.java,
-                "flippymind.db"
-            ).build()
-        }
-    }
+    //here only dao
+    abstract fun deckDao() : DeckDao
 }
