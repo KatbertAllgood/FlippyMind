@@ -38,8 +38,6 @@ fun MainScreenComposable(
     viewModel: MainScreenVM = viewModel()
 ){
 
-    viewModel.getAddDecks()
-
     FlippyMindTheme(
         textSize = FlippyMindSize.Medium
     ) {
