@@ -36,7 +36,9 @@ import com.example.flippymind.screens.mainscreen.MainScreenComposable
 import com.example.flippymind.ui.theme.FlippyMindSize
 import com.example.flippymind.ui.theme.FlippyMindTheme
 import com.example.flippymind.view.DeckItemComposable
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val TAG = MainActivity::class.simpleName
@@ -71,7 +73,6 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
-
         }
     }
 
