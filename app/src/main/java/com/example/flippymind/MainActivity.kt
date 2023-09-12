@@ -10,6 +10,8 @@ import com.example.flippymind.screens.createnewdeck.CreateNewDeckComposable
 import com.example.flippymind.screens.mainscreen.MainScreenComposable
 import com.example.flippymind.ui.theme.FlippyMindTheme
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.flippymind.screens.mainscreen.MainScreenVM
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -30,9 +32,13 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     composable(MAIN_SCREEN) {
-                        MainScreenComposable {
-                            navController.navigate(CREATE_NEW_DECK_SCREEN)
-                        }
+
+                        val viewModel = hiltViewModel<MainScreenVM>()
+                        MainScreenComposable(viewModel)
+
+//                        MainScreenComposable {
+//                            navController.navigate(CREATE_NEW_DECK_SCREEN)
+//                        }
                     }
 
                     composable(CREATE_NEW_DECK_SCREEN) {
