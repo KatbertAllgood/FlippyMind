@@ -5,7 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.data.models.DeckData
+import com.example.data.model.DeckData
 import kotlinx.coroutines.flow.Flow
 
 @Dao
