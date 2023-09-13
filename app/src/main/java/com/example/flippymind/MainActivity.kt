@@ -3,6 +3,15 @@ package com.example.flippymind
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.EaseIn
+import androidx.compose.animation.core.EaseOut
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -28,10 +37,14 @@ class MainActivity : ComponentActivity() {
 
                 NavHost(
                     navController = navController,
-                    startDestination = MAIN_SCREEN
+                    startDestination = MAIN_SCREEN,
+                    enterTransition = { EnterTransition.None },
+                    exitTransition = { ExitTransition.None }
                 ) {
 
-                    composable(MAIN_SCREEN) {
+                    composable(
+                        route = MAIN_SCREEN
+                    ) {
 
                         val viewModel = hiltViewModel<MainScreenVM>()
                         MainScreenComposable(
@@ -40,20 +53,50 @@ class MainActivity : ComponentActivity() {
                             },
                             viewModel = viewModel
                         )
-
-//                        MainScreenComposable {
-//                            navController.navigate(CREATE_NEW_DECK_SCREEN)
-//                        }
                     }
 
-                    composable(CREATE_NEW_DECK_SCREEN) {
-                        CreateNewDeckComposable {
-                            navController.navigate(MAIN_SCREEN) {
-                                popUpTo(MAIN_SCREEN) {
-                                    inclusive = true
+                    composable(
+                        route = CREATE_NEW_DECK_SCREEN,
+                        enterTransition = {
+//                            fadeIn(
+//                                animationSpec = tween(
+//                                    300,
+//                                    easing = LinearEasing
+//                                )
+//                            ) +
+                            slideIntoContainer(
+                                animationSpec = tween(
+                                    400,
+                                    easing = EaseIn
+                                ),
+                                towards = AnimatedContentTransitionScope.SlideDirection.Start
+                            )
+                        },
+                        exitTransition = {
+//                            fadeOut(
+//                                animationSpec = tween(
+//                                    300,
+//                                    easing = LinearEasing
+//                                )
+//                            ) +
+                            slideOutOfContainer(
+                                animationSpec = tween(
+                                    400,
+                                    easing = EaseOut
+                                ),
+                                towards = AnimatedContentTransitionScope.SlideDirection.End
+                            )
+                        }
+                    ) {
+                        CreateNewDeckComposable(
+                            onClickBack = {
+                                navController.navigate(MAIN_SCREEN) {
+                                    popUpTo(MAIN_SCREEN) {
+                                        inclusive = true
+                                    }
                                 }
                             }
-                        }
+                        )
                     }
                 }
             }
