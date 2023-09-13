@@ -34,6 +34,8 @@ internal fun FlippyMindTheme(
 
     val colors = basePalette
 
+    val deckColors = deckPalette
+
     val typography = FlippyMindTypography(
         heading = TextStyle(
             fontSize = when (textSize) {
@@ -78,6 +80,7 @@ internal fun FlippyMindTheme(
 
     CompositionLocalProvider(
         LocalFlippyMindColors provides colors,
+        LocalFlippyMindDeckColors provides deckColors,
         LocalFlippyMindTypography provides typography,
         LocalFlippyMindShape provides shapes,
         content = content
