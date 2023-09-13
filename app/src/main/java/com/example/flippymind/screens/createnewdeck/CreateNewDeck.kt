@@ -18,18 +18,21 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.flippymind.R
-import com.example.flippymind.ui.theme.FlippyMindDeckColors
 import com.example.flippymind.ui.theme.FlippyMindSize
 import com.example.flippymind.ui.theme.FlippyMindTheme
 
@@ -59,6 +62,8 @@ fun CreateNewDeckComposable(
             )
             
             ColorChooser()
+
+            NameInputPlace()
 
         }
     }
@@ -200,6 +205,61 @@ private fun ColorChooser() {
 //                )
 
             }
+        }
+    }
+}
+
+@Composable
+private fun NameInputPlace() {
+
+    var name by remember {
+        mutableStateOf(
+            TextFieldValue("")
+        )
+    }
+
+    FlippyMindTheme {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    top = 20.dp,
+                    start = 20.dp,
+                    end = 20.dp
+                ),
+            colors = CardDefaults.cardColors(
+                containerColor = FlippyMindTheme.colors.secondaryBackground
+            ),
+            shape = FlippyMindTheme.shape.cornersStyle,
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = 5.dp
+            )
+        ) {
+            TextField(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(60.dp)
+                    .padding(5.dp),
+                value = name,
+                onValueChange = { newText ->
+                    name = newText
+                },
+                singleLine = true,
+                colors = TextFieldDefaults.colors(
+
+                ),
+                label = {
+                    Text(
+                        text = stringResource(id = R.string.name_label)
+                    )
+                },
+                shape = FlippyMindTheme.shape.cornersStyle,
+                placeholder = {
+                    Text(
+                        text = stringResource(id = R.string.type_name_hint)
+                    )
+                }
+            )
         }
     }
 }
