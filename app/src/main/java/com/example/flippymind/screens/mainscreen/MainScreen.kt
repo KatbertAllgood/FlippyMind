@@ -35,7 +35,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun MainScreenComposable(
-//    onClickNewDeck: () -> Unit,
+    onClickNewDeck: () -> Unit,
     viewModel: MainScreenVM = viewModel()
 ){
 
@@ -65,7 +65,7 @@ fun MainScreenComposable(
                 .background(FlippyMindTheme.colors.primaryBackground)
         ) {
             DecksHeader(
-//                onClickNewDeck
+                onClickNewDeck
             )
             DecksList()
 
@@ -85,7 +85,7 @@ private fun MainScreenPreview() {
                 .background(FlippyMindTheme.colors.primaryBackground)
         ) {
             DecksHeader(
-//                onClickNewDeck
+                onClickNewDeck = { }
             )
             DecksList()
 
@@ -95,7 +95,7 @@ private fun MainScreenPreview() {
 
 @Composable
 private fun DecksHeader(
-//    onClickNewDeck: () -> Unit
+    onClickNewDeck: () -> Unit
 ) {
     FlippyMindTheme() {
         Row(
@@ -148,7 +148,7 @@ private fun DecksHeader(
 
                 Button(
                     onClick = {
-//                        onClickNewDeck()
+                        onClickNewDeck()
                     },
                     shape = RoundedCornerShape(50),
                     colors = ButtonDefaults.buttonColors(
