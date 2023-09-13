@@ -34,7 +34,12 @@ class MainActivity : ComponentActivity() {
                     composable(MAIN_SCREEN) {
 
                         val viewModel = hiltViewModel<MainScreenVM>()
-                        MainScreenComposable(viewModel)
+                        MainScreenComposable(
+                            onClickNewDeck = {
+                                navController.navigate(CREATE_NEW_DECK_SCREEN)
+                            },
+                            viewModel = viewModel
+                        )
 
 //                        MainScreenComposable {
 //                            navController.navigate(CREATE_NEW_DECK_SCREEN)
