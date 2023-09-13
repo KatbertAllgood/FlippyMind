@@ -12,7 +12,17 @@ data class FlippyMindColors(
     val primaryBackground: Color,
 //    val secondaryText: Color,
     val secondaryBackground: Color,
+    val tertiaryBackground: Color,
     val controlColor: Color
+)
+
+data class FlippyMindDeckColors(
+    val yellow: Color,
+    val blue: Color,
+    val green: Color,
+    val cian: Color,
+    val red: Color,
+    val pink: Color,
 )
 
 data class FlippyMindTypography(
@@ -30,6 +40,10 @@ object FlippyMindTheme {
     internal val colors: FlippyMindColors
         @Composable
         internal get() = LocalFlippyMindColors.current
+
+    internal val deckColors: FlippyMindDeckColors
+        @Composable
+        internal get() = LocalFlippyMindDeckColors.current
 
     internal val typography: FlippyMindTypography
         @Composable
@@ -51,6 +65,10 @@ enum class FlippyMindCorners {
 
 internal val LocalFlippyMindColors = staticCompositionLocalOf<FlippyMindColors>{
     error("No colors provided")
+}
+
+internal val LocalFlippyMindDeckColors = staticCompositionLocalOf<FlippyMindDeckColors> {
+    error("No deck colors provided")
 }
 
 internal val LocalFlippyMindTypography = staticCompositionLocalOf<FlippyMindTypography> {
