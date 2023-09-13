@@ -64,14 +64,15 @@ dependencies {
 
     // Compose Navigation
     def nav_version = "2.7.2"
-    def nav_anim_version = "0.33.1-alpha"
     implementation "androidx.navigation:navigation-compose:$nav_version"
-    implementation "com.google.accompanist:accompanist-navigation-animation:$nav_anim_version"
 
     // Hilt
     implementation 'com.google.dagger:hilt-android:2.48'
     kapt 'com.google.dagger:hilt-compiler:2.48'
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+
+    // Material 3
+    implementation 'androidx.compose.material3:material3:1.1.1'
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
