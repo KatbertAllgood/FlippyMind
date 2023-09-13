@@ -32,11 +32,29 @@ import com.example.flippymind.ui.theme.FlippyMindTheme
 import com.example.flippymind.view.DeckItemComposable
 import androidx.lifecycle.viewmodel.compose.viewModel
 
+
 @Composable
 fun MainScreenComposable(
 //    onClickNewDeck: () -> Unit,
     viewModel: MainScreenVM = viewModel()
 ){
+
+//    viewModel.insertDeck(
+//        DeckPresentation(
+//            null,
+//            "test 1",
+//            36,
+//            0xFF04963E
+//        )
+//    )
+//    viewModel.insertDeck(
+//        DeckPresentation(
+//            null,
+//            "test 2",
+//            9,
+//            0xFF055988
+//        )
+//    )
 
     FlippyMindTheme(
         textSize = FlippyMindSize.Medium
