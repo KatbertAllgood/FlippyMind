@@ -49,16 +49,6 @@ fun DeckItemComposable(
     deckItem: DeckDomain
 ) {
 
-    val deckIndicationList: List<Color> = listOf(
-        Color(0xFFEEAA00),
-        Color(0xFF049684),
-        Color(0xFF04963E),
-        Color(0xFF880505),
-        Color(0xFF055988),
-        Color(0xFF880554),
-        Color(0xFF7289DA),
-    )
-
     FlippyMindTheme(
         corners = FlippyMindCorners.Rounded,
         textSize = FlippyMindSize.Small
