@@ -28,7 +28,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -238,19 +240,29 @@ private fun NameInputPlace() {
             TextField(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(60.dp)
-                    .padding(5.dp),
+                    .height(60.dp),
                 value = name,
                 onValueChange = { newText ->
                     name = newText
                 },
                 singleLine = true,
                 colors = TextFieldDefaults.colors(
-
+                    focusedTextColor = FlippyMindTheme.colors.primaryText,
+                    unfocusedTextColor = FlippyMindTheme.colors.primaryText,
+                    focusedContainerColor = FlippyMindTheme.colors.secondaryBackground,
+                    unfocusedContainerColor = FlippyMindTheme.colors.secondaryBackground,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    focusedLabelColor = FlippyMindTheme.colors.controlColor,
+                    unfocusedLabelColor = FlippyMindTheme.colors.primaryText,
+                    cursorColor = FlippyMindTheme.colors.controlColor
+//                    focusedPlaceholderColor = FlippyMindTheme.colors.tertiaryBackground,
+//                    unfocusedPlaceholderColor = FlippyMindTheme.colors.tertiaryBackground,
                 ),
                 label = {
                     Text(
-                        text = stringResource(id = R.string.name_label)
+                        text = stringResource(id = R.string.name_label),
+                        fontFamily = FlippyMindTheme.typography.default.fontFamily
                     )
                 },
                 shape = FlippyMindTheme.shape.cornersStyle,
@@ -258,7 +270,10 @@ private fun NameInputPlace() {
                     Text(
                         text = stringResource(id = R.string.type_name_hint)
                     )
-                }
+                },
+                textStyle = TextStyle(
+                    fontFamily = FlippyMindTheme.typography.default.fontFamily
+                )
             )
         }
     }
