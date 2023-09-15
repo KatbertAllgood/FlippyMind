@@ -4,7 +4,7 @@ interface DeckDomain {
     val id: Int?
     val name: String
     val cardsCount: Int
-    val color: Long
+    val color: String
 }
 
 
