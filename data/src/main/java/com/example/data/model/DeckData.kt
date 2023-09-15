@@ -13,5 +13,5 @@ data class DeckData(
     // @ColumnInfo(name = "bla-bla-bla") maybe if I want custom name of column in table
     override val name: String = "",
     override val cardsCount: Int = 0,
-    override val color: Long = 0
+    override val color: String = ""
 ) : DeckDomain
