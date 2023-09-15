@@ -15,6 +15,7 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.RadioButton
@@ -88,9 +89,23 @@ fun CreateNewDeckComposable(
             Button(
                 onClick = {
 
-                }
+                },
+                shape = FlippyMindTheme.shape.cornersStyle,
+                modifier = Modifier
+                    .fillMaxWidth(0.5f)
+                    .padding(
+                        top = 20.dp
+                    ),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = FlippyMindTheme.colors.controlColor
+                )
             ) {
-
+                Text(
+                    text = stringResource(id = R.string.confirm),
+                    fontFamily = FlippyMindTheme.typography.defaultBold.fontFamily,
+                    fontSize = FlippyMindTheme.typography.defaultBold.fontSize,
+                    color = FlippyMindTheme.colors.primaryText
+                )
             }
 
         }
@@ -227,7 +242,8 @@ private fun NameInputPlace() {
                 label = {
                     Text(
                         text = stringResource(id = R.string.name_label),
-                        fontFamily = FlippyMindTheme.typography.defaultBold.fontFamily
+                        fontFamily = FlippyMindTheme.typography.defaultBold.fontFamily,
+                        fontSize = FlippyMindTheme.typography.defaultBold.fontSize
                     )
                 },
                 shape = FlippyMindTheme.shape.cornersStyle,
