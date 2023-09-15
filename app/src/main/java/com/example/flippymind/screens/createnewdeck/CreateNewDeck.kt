@@ -1,6 +1,8 @@
 package com.example.flippymind.screens.createnewdeck
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,9 +28,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
@@ -38,6 +43,7 @@ import com.example.flippymind.R
 import com.example.flippymind.ui.theme.FlippyMindSize
 import com.example.flippymind.ui.theme.FlippyMindTheme
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun CreateNewDeckComposable(
     onClickBack: () -> Unit
@@ -45,13 +51,25 @@ fun CreateNewDeckComposable(
     FlippyMindTheme(
         textSize = FlippyMindSize.Medium
     ) {
+
+        val keyboardController = LocalSoftwareKeyboardController.current
+        val focusManager = LocalFocusManager.current
+        val interactionSource = remember { MutableInteractionSource() }
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(FlippyMindTheme.colors.primaryBackground)
                 .padding(
                     top = 20.dp
-                ),
+                )
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = null
+                ) {
+                    keyboardController?.hide()
+                    focusManager.clearFocus(true)
+                },
             horizontalAlignment = Alignment.CenterHorizontally,
 //            verticalArrangement = Arrangement.Center
         ) {
@@ -66,6 +84,14 @@ fun CreateNewDeckComposable(
             ColorChooser()
 
             NameInputPlace()
+
+            Button(
+                onClick = {
+
+                }
+            ) {
+
+            }
 
         }
     }
@@ -145,67 +171,6 @@ private fun ColorChooser() {
                     )
 
                 }
-
-//                RadioButton(
-//                    selected = false,
-//                    onClick = { /*TODO*/ },
-//                    colors = RadioButtonDefaults.colors(
-//                        selectedColor = FlippyMindTheme.deckColors.yellow,
-//                        unselectedColor = FlippyMindTheme.deckColors.yellow
-//                    ),
-//                    modifier = modifier
-//                )
-//
-//                RadioButton(
-//                    selected = false,
-//                    onClick = { /*TODO*/ },
-//                    colors = RadioButtonDefaults.colors(
-//                        selectedColor = FlippyMindTheme.deckColors.green,
-//                        unselectedColor = FlippyMindTheme.deckColors.green
-//                    ),
-//                    modifier = modifier
-//                )
-//
-//                RadioButton(
-//                    selected = false,
-//                    onClick = { /*TODO*/ },
-//                    colors = RadioButtonDefaults.colors(
-//                        selectedColor = FlippyMindTheme.deckColors.red,
-//                        unselectedColor = FlippyMindTheme.deckColors.red
-//                    ),
-//                    modifier = modifier
-//                )
-//
-//                RadioButton(
-//                    selected = false,
-//                    onClick = { /*TODO*/ },
-//                    colors = RadioButtonDefaults.colors(
-//                        selectedColor = FlippyMindTheme.deckColors.blue,
-//                        unselectedColor = FlippyMindTheme.deckColors.blue
-//                    ),
-//                    modifier = modifier
-//                )
-//
-//                RadioButton(
-//                    selected = false,
-//                    onClick = { /*TODO*/ },
-//                    colors = RadioButtonDefaults.colors(
-//                        selectedColor = FlippyMindTheme.deckColors.cian,
-//                        unselectedColor = FlippyMindTheme.deckColors.cian
-//                    ),
-//                    modifier = modifier
-//                )
-//
-//                RadioButton(
-//                    selected = false,
-//                    onClick = { /*TODO*/ },
-//                    colors = RadioButtonDefaults.colors(
-//                        selectedColor = FlippyMindTheme.deckColors.pink,
-//                        unselectedColor = FlippyMindTheme.deckColors.pink
-//                    ),
-//                    modifier = modifier
-//                )
-
             }
         }
     }
@@ -254,7 +219,7 @@ private fun NameInputPlace() {
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     focusedLabelColor = FlippyMindTheme.colors.controlColor,
-                    unfocusedLabelColor = FlippyMindTheme.colors.primaryText,
+                    unfocusedLabelColor = FlippyMindTheme.colors.controlColor,
                     cursorColor = FlippyMindTheme.colors.controlColor
 //                    focusedPlaceholderColor = FlippyMindTheme.colors.tertiaryBackground,
 //                    unfocusedPlaceholderColor = FlippyMindTheme.colors.tertiaryBackground,
@@ -262,7 +227,7 @@ private fun NameInputPlace() {
                 label = {
                     Text(
                         text = stringResource(id = R.string.name_label),
-                        fontFamily = FlippyMindTheme.typography.default.fontFamily
+                        fontFamily = FlippyMindTheme.typography.defaultBold.fontFamily
                     )
                 },
                 shape = FlippyMindTheme.shape.cornersStyle,
