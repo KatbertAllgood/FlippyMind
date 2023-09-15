@@ -20,6 +20,7 @@ import com.example.flippymind.screens.mainscreen.MainScreenComposable
 import com.example.flippymind.ui.theme.FlippyMindTheme
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.flippymind.screens.createnewdeck.CreateNewDeckVM
 import com.example.flippymind.screens.mainscreen.MainScreenVM
 
 @AndroidEntryPoint
@@ -88,6 +89,8 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                     ) {
+
+                        val viewModel = hiltViewModel<CreateNewDeckVM>()
                         CreateNewDeckComposable(
                             onClickBack = {
                                 navController.navigate(MAIN_SCREEN) {
@@ -95,7 +98,8 @@ class MainActivity : ComponentActivity() {
                                         inclusive = true
                                     }
                                 }
-                            }
+                            },
+                            viewModel = viewModel
                         )
                     }
                 }
