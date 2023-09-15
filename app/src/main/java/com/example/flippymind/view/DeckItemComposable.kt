@@ -28,6 +28,7 @@ import com.example.flippymind.model.DeckPresentation
 import com.example.flippymind.ui.theme.FlippyMindCorners
 import com.example.flippymind.ui.theme.FlippyMindSize
 import com.example.flippymind.ui.theme.FlippyMindTheme
+import com.example.flippymind.utils.ColorConstants
 
 @Preview(showBackground = true)
 @Composable
@@ -36,7 +37,7 @@ private fun DeckPreview(){
     val deck: DeckPresentation = DeckPresentation(
         name = "Test name",
         cardsCount = 24,
-        color = 0xFFEEAA00
+        color = ColorConstants.GREEN
     )
 
     FlippyMindTheme {
@@ -90,6 +91,8 @@ fun DeckItemComposable(
 //                        .background(Color.Red)
                 ) {
 
+                    val deckPalette = FlippyMindTheme.deckColors
+
                     Canvas(
                         modifier = Modifier
                             .size(
@@ -97,7 +100,15 @@ fun DeckItemComposable(
                             )
                     ) {
                         drawCircle(
-                            color = Color(deckItem.color),
+                            color = when(deckItem.color) {
+                                ColorConstants.YELLOW -> deckPalette.yellow
+                                ColorConstants.GREEN -> deckPalette.green
+                                ColorConstants.BLUE -> deckPalette.blue
+                                ColorConstants.RED -> deckPalette.red
+                                ColorConstants.CIAN -> deckPalette.cian
+                                ColorConstants.PINK -> deckPalette.pink
+                                else -> deckPalette.yellow
+                            },
                         )
                     }
 
