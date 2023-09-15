@@ -12,5 +12,6 @@
     <string name="create_new_deck">Создание колоды</string>
     <string name="name_label">Название</string>
     <string name="type_name_hint">Введите название колоды</string>
+    <string name="confirm">Подтвердить</string>
 
 </resources>
