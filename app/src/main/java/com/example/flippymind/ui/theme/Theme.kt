@@ -39,9 +39,9 @@ internal fun FlippyMindTheme(
     val typography = FlippyMindTypography(
         heading = TextStyle(
             fontSize = when (textSize) {
-                FlippyMindSize.Small -> 18.sp
-                FlippyMindSize.Medium -> 20.sp
-                FlippyMindSize.Big -> 24.sp
+                FlippyMindSize.Small -> 16.sp
+                FlippyMindSize.Medium -> 18.sp
+                FlippyMindSize.Big -> 20.sp
             },
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily(Font(R.font.rubik_mono_one_regular))
