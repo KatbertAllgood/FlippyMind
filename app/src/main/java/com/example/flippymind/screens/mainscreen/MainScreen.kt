@@ -1,5 +1,6 @@
 package com.example.flippymind.screens.mainscreen
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -31,6 +32,7 @@ import com.example.flippymind.ui.theme.FlippyMindSize
 import com.example.flippymind.ui.theme.FlippyMindTheme
 import com.example.flippymind.view.DeckItemComposable
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.flippymind.utils.ColorConstants
 
 
 @Composable
@@ -39,22 +41,9 @@ fun MainScreenComposable(
     viewModel: MainScreenVM = viewModel()
 ){
 
-//    viewModel.insertDeck(
-//        DeckPresentation(
-//            null,
-//            "test 1",
-//            36,
-//            0xFF04963E
-//        )
-//    )
-//    viewModel.insertDeck(
-//        DeckPresentation(
-//            null,
-//            "test 2",
-//            9,
-//            0xFF055988
-//        )
-//    )
+    val log = viewModel.getAllDecks()
+
+    Log.d("MAIN_SCREEN", log.toString())
 
     FlippyMindTheme(
         textSize = FlippyMindSize.Medium
@@ -179,7 +168,7 @@ private fun DecksList(){
         DeckPresentation(
             name = "новая папка",
             cardsCount = 12,
-            color = 0xFF04963E
+            color = ColorConstants.GREEN
         )
     )
     FlippyMindTheme(){
