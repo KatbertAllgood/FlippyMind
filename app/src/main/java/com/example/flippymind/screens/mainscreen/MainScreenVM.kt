@@ -1,6 +1,8 @@
 package com.example.flippymind.screens.mainscreen
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.usecase.DeleteDeckUseCase
@@ -25,19 +27,23 @@ class MainScreenVM @Inject constructor(
 
     private val TAG = MainScreenVM::class.simpleName
 
-    fun getAllDecks() {
+    val decksList = getAllDecksUseCase()
 
-        viewModelScope.launch {
+//    init {
+//        getAllDecks()
+//    }
 
-            getAllDecksUseCase().flowOn(Dispatchers.IO).catch {
-                Log.d(TAG, "GET_ALL_DECKS_ERROR: " + it.message)
-            }.map {
-                ListDeckToPresentation(it)
-            }.collect {
-                Log.d(TAG, "GET_ALL_DECKS_SUCCESS: $it")
-            }
-        }
-    }
+//    private fun getAllDecks() {
+//        viewModelScope.launch {
+//            getAllDecksUseCase().flowOn(Dispatchers.IO).catch {
+//                Log.d(TAG, "GET_ALL_DECKS_ERROR: " + it.message)
+//            }.map {
+//                ListDeckToPresentation(it).map()
+//            }.collect { list ->
+//                Log.d(TAG, "ALL_DECKS_SUCCESS: " + list.toString())
+//            }
+//        }
+//    }
 
     fun insertDeck(
         deck: DeckPresentation
