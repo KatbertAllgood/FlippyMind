@@ -1,6 +1,7 @@
 package com.example.flippymind.screens.createnewdeck
 
 import android.util.Log
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -244,16 +245,20 @@ fun CreateNewDeckComposable(
 
             //region confirm button
 
+            val onBackPressedDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
+
             Button(
                 onClick = {
-                          viewModel.insertDeck(
-                              DeckPresentation(
-                                  id = null,
-                                  name = name.text,
-                                  cardsCount = 0,
-                                  color = selectedColorName.value
-                              )
-                          )
+                    viewModel.insertDeck(
+                        DeckPresentation(
+                            id = null,
+                            name = name.text,
+                            cardsCount = 0,
+                            color = selectedColorName.value
+                        )
+                    )
+
+                    onBackPressedDispatcher?.onBackPressed()
                 },
                 shape = FlippyMindTheme.shape.cornersStyle,
                 modifier = Modifier
