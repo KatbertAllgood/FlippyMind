@@ -1,6 +1,5 @@
 package com.example.flippymind.screens.mainscreen
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -34,11 +33,6 @@ import com.example.flippymind.ui.theme.FlippyMindTheme
 import com.example.flippymind.view.DeckItemComposable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.flippymind.model.mapper.ListDeckToPresentation
-import com.example.flippymind.utils.ColorConstants
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
 
 
 @Composable
@@ -63,6 +57,8 @@ fun MainScreenComposable(
 
             DecksList(ListDeckToPresentation(deckList.value).map())
 
+            CardsHeader()
+
         }
     }
 }
@@ -81,6 +77,8 @@ private fun MainScreenPreview() {
             DecksHeader(
                 onClickNewDeck = { }
             )
+
+            CardsHeader()
 
         }
     }
@@ -170,7 +168,6 @@ private fun DecksList(decks: List<DeckPresentation>){
 
     FlippyMindTheme(){
 
-
         LazyRow(
             contentPadding = PaddingValues(
                 horizontal = 10.dp,
@@ -182,6 +179,44 @@ private fun DecksList(decks: List<DeckPresentation>){
 
             items(decks) {
                 DeckItemComposable(deckItem = it)
+            }
+        }
+    }
+}
+
+@Composable
+private fun CardsHeader() {
+    FlippyMindTheme {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start, //switch to space between later
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    top = 5.dp,
+                    start = 20.dp,
+                    end = 20.dp
+                )
+        ) {
+            Row(
+                verticalAlignment = Alignment.Bottom
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_cards),
+                    contentDescription = "cards icon",
+                    modifier = Modifier
+                        .size(37.dp)
+                )
+                Text(
+                    text = stringResource(id = R.string.cards),
+                    color = FlippyMindTheme.colors.primaryText,
+                    fontFamily = FlippyMindTheme.typography.heading.fontFamily,
+                    fontSize = FlippyMindTheme.typography.heading.fontSize,
+                    modifier = Modifier
+                        .padding(
+                            start = 10.dp
+                        )
+                )
             }
         }
     }
