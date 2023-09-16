@@ -29,9 +29,6 @@ class MainScreenVM @Inject constructor(
 
     val decksList = getAllDecksUseCase()
 
-//    init {
-//        getAllDecks()
-//    }
 
 //    private fun getAllDecks() {
 //        viewModelScope.launch {
