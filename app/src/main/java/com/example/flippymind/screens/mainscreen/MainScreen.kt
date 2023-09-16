@@ -20,6 +20,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -32,7 +33,12 @@ import com.example.flippymind.ui.theme.FlippyMindSize
 import com.example.flippymind.ui.theme.FlippyMindTheme
 import com.example.flippymind.view.DeckItemComposable
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.flippymind.model.mapper.ListDeckToPresentation
 import com.example.flippymind.utils.ColorConstants
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 
 
 @Composable
@@ -41,9 +47,7 @@ fun MainScreenComposable(
     viewModel: MainScreenVM = viewModel()
 ){
 
-    val log = viewModel.getAllDecks()
-
-    Log.d("MAIN_SCREEN", log.toString())
+    val deckList = viewModel.decksList.collectAsState(initial = emptyList())
 
     FlippyMindTheme(
         textSize = FlippyMindSize.Medium
@@ -56,7 +60,8 @@ fun MainScreenComposable(
             DecksHeader(
                 onClickNewDeck
             )
-            DecksList()
+
+            DecksList(ListDeckToPresentation(deckList.value).map())
 
         }
     }
@@ -76,7 +81,6 @@ private fun MainScreenPreview() {
             DecksHeader(
                 onClickNewDeck = { }
             )
-            DecksList()
 
         }
     }
@@ -162,15 +166,8 @@ private fun DecksHeader(
 }
 
 @Composable
-private fun DecksList(){
+private fun DecksList(decks: List<DeckPresentation>){
 
-    val list : List<DeckPresentation> = listOf(
-        DeckPresentation(
-            name = "новая папка",
-            cardsCount = 12,
-            color = ColorConstants.GREEN
-        )
-    )
     FlippyMindTheme(){
 
 
@@ -183,7 +180,7 @@ private fun DecksList(){
 //                .height(intrinsicSize = IntrinsicSize.Max)
         ) {
 
-            items(list) {
+            items(decks) {
                 DeckItemComposable(deckItem = it)
             }
         }
